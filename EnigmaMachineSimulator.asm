@@ -131,7 +131,6 @@ main:
 	jal drawEnigma
 	
 	# draw reflector
-	# draw reflector
 	li $a0, 0x51
 	li $a1, 0x708090
 	li $a2, 660
