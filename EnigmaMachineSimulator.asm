@@ -913,7 +913,7 @@ drawLetter:
 	beq $a0, -1, delete
 
 letterZ:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -921,15 +921,19 @@ letterZ:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 12($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 4($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -940,43 +944,51 @@ letterZ:
 	j funcEnd
 
 letterY:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 4($s0)
 	sw $s1, 12($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 
 	j funcEnd
 
 letterX:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 4($s0)
 	sw $s1, 12($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 4($s0)
 	sw $s1, 12($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -984,27 +996,30 @@ letterX:
 	j funcEnd
 
 letterW:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 8($s0)
 	sw $s1, 16($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1012,46 +1027,54 @@ letterW:
 	j funcEnd
 
 letterV:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 8($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 
 	j funcEnd
 
 letterU:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1062,7 +1085,7 @@ letterU:
 	j funcEnd
 
 letterT:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1070,23 +1093,26 @@ letterT:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
-
 
 	j funcEnd
 
 letterS:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1094,9 +1120,11 @@ letterS:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1104,9 +1132,11 @@ letterS:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 16($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1117,7 +1147,7 @@ letterS:
 	j funcEnd
 
 letterR:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1125,10 +1155,12 @@ letterR:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1136,10 +1168,12 @@ letterR:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1147,34 +1181,38 @@ letterR:
 	j funcEnd
 
 letterQ:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 16($s0)
 
 	j funcEnd
 
 letterP:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1182,10 +1220,12 @@ letterP:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1193,35 +1233,41 @@ letterP:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 
 	j funcEnd
 	
 letterO:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1232,26 +1278,30 @@ letterO:
 	j funcEnd
 
 letterN:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 8($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1259,26 +1309,30 @@ letterN:
 	j funcEnd
 
 letterM:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 8($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1286,19 +1340,23 @@ letterM:
 	j funcEnd
 
 letterL:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1309,24 +1367,28 @@ letterL:
 	j funcEnd
 
 letterK:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
-
+	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
-
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1334,20 +1396,24 @@ letterK:
 	j funcEnd
 
 letterJ:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 16($s0)
-
-	add $s0, $s0, $s3
-	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 16($s0)
 	
+	# draw row 3
+	add $s0, $s0, $s3
+	sw $s1, 16($s0)
+	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1358,23 +1424,27 @@ letterJ:
 	j funcEnd
 
 letterI:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
-	add $s0, $s0, $s3
-	sw $s1, 8($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 8($s0)
 	
+	# draw row 4
+	add $s0, $s0, $s3
+	sw $s1, 8($s0)
+	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1385,15 +1455,17 @@ letterI:
 	j funcEnd
 
 letterH:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1401,10 +1473,12 @@ letterH:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
@@ -1412,26 +1486,30 @@ letterH:
 	j funcEnd
 
 letterG:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
+	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1442,17 +1520,19 @@ letterG:
 	j funcEnd
 
 letterF:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
+	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1460,26 +1540,30 @@ letterF:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 
 	j funcEnd
 
 letterE:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
-
+	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1487,9 +1571,11 @@ letterE:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1500,25 +1586,29 @@ letterE:
 	j funcEnd
 
 letterD:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1528,23 +1618,27 @@ letterD:
 	j funcEnd	
 			
 letterC:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-
+	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1555,50 +1649,51 @@ letterC:
 	j funcEnd
 	
 letterB:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
-	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
-
 
 	j funcEnd	
 	
 letterA:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
-
 	sw $s1, 4($s0)
 	sw $s1, 8($s0)
 	sw $s1, 12($s0)
 
-
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1606,19 +1701,20 @@ letterA:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 16($s0)
-
 
 	j funcEnd
 	
 delete:
-	# draw letter
+	# draw row 1
 	add $s0, $s0, $s2
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1626,6 +1722,7 @@ delete:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 
+	# draw row 1
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1633,6 +1730,7 @@ delete:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 2
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1640,6 +1738,7 @@ delete:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 3
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1647,6 +1746,7 @@ delete:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 4
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
@@ -1654,6 +1754,7 @@ delete:
 	sw $s1, 12($s0)
 	sw $s1, 16($s0)
 	
+	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
 	sw $s1, 4($s0)
