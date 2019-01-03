@@ -230,52 +230,54 @@ decrementR3:
 	j inLoop
 
 letter:
+	# move rotors
 	move $a0, $s1
 	move $a1, $s2
 	move $a2, $s3
-	# move rotors
-	jal moveRotors#($s1, $s2, $s3)
+	jal moveRotors
+	
+	# load new rotor offset values
 	lw $s1, r1_offset
 	lw $s2, r2_offset
 	lw $s3, r3_offset
 	
-	# rotor 3, 1st pass
+	# rotor 3, 1st traversal
 	move $a0, $s0
 	la $a1, r3
 	move $a2, $s3
 	jal traverseRotor
 	
-	# rotor 2, 1st pass
+	# rotor 2, 1st traversal
 	move $a0, $v0
 	la $a1, r2
 	move $a2, $s2
 	jal traverseRotor
 	
-	# rotor 1, 1st pass
+	# rotor 1, 1st traversal
 	move $a0, $v0
 	la $a1, r1
 	move $a2, $s1
 	jal traverseRotor
 	
-	# reflector
+	# reflect
 	move $a0, $v0
 	la $a1, ref
 	li $a2, 0
 	jal traverseRotor
 	
-	# rotor 1, 2nd pass
+	# rotor 1, 2nd traversal
 	move $a0, $v0
 	la $a1, r1i
 	move $a2, $s1
 	jal traverseRotor
 	
-	# rotor 2, 2nd pass
+	# rotor 2, 2nd traversal
 	move $a0, $v0
 	la $a1, r2i
 	move $a2, $s2
 	jal traverseRotor
 	
-	# rotor 3, 2nd pass
+	# rotor 3, 2nd traversal
 	move $a0, $v0
 	la $a1, r3i
 	move $a2, $s3
@@ -337,6 +339,7 @@ rEnd:	addi $s3, $s3, 1
 	jal drawRotors
 	popReturnAddress
 	
+	# update the rotor offset values in memory
 	sw $s1, r1_offset
 	sw $s2, r2_offset
 	sw $s3, r3_offset
