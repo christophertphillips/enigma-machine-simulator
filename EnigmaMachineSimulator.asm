@@ -306,6 +306,8 @@ exit:
 # FUNCTIONS #
 #-----------#
 
+# moves rotors as user inputs characters
+# moveRotors($a0 = rotor1Offset, $a1 = rotor2Offset, $a2 = rotor3Offset)
 moveRotors:
 	# push s-registers onto the stack
 	pushRegisters
@@ -347,6 +349,7 @@ rEnd:	addi $s3, $s3, 1
 
 
 # traverses the signal across a rotor
+# traverseRotor($a0 = inputLetter, $a1 = rotor, $a2 = rotorOffset)
 traverseRotor:
 	# push s-registers onto the stack
 	pushRegisters
@@ -377,6 +380,7 @@ traverseRotor:
 
 
 # draws the background and wires on engima machine
+# drawEnigma()
 drawEnigma:
 	# push s-registers onto the stack
 	pushRegisters
@@ -454,6 +458,7 @@ drawLine5:
 
 
 # draws a reflector
+# drawReflector($a1 = color, $a2 = offset, $a3 = windowWidth)
 drawReflector:
 	# push s-registers onto the stack
 	pushRegisters
@@ -515,6 +520,7 @@ reflectorMiddle:
     
 
 # draws all three rotors (high-level)
+# drawRotors()
 drawRotors:
 	# push s-registers onto the stack
 	pushRegisters
@@ -586,6 +592,7 @@ drawRotors:
     
     
 # draws an indivdual rotor (low-level)
+# drawRotor($a1 = color, $a2 = offset, $a3 = windowWidth)
 drawRotor:
 	# push s-registers onto the stack
 	pushRegisters
@@ -664,6 +671,7 @@ rotorMiddle:
 
 
 # draws all lamps (high-level)
+# drawLamps()
 drawLamps:
 	# push s-registers onto the stack
 	pushRegisters
@@ -787,7 +795,8 @@ drawLampRow3:
     
     
     
-# draws an individual lamp (low-level)  
+# draws an individual lamp (low-level)
+# drawLamp($a1 = color, $a2 = offset, $a3 = windowWidth)
 drawLamp:
 	# push s-registers onto the stack
 	pushRegisters
@@ -866,6 +875,7 @@ lampMiddle:
 
 
 # draws letters
+# drawLetter($a0 = letter, $a1 = color, $a2 = offset, a3 = windowWidth)
 drawLetter:
 	# push s-registers onto the stack
 	pushRegisters
