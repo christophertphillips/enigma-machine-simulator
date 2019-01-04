@@ -524,12 +524,12 @@ drawRotors:
 	pushRegisters
 
 	# display notification in console
-	move $t1, $s1
-	move $t2, $s2
-	move $t3, $s3
-	indexToLetter($t1)
-	indexToLetter($t2)
-	indexToLetter($t3)
+	#move $t1, $s1
+	#move $t2, $s2
+	#move $t3, $s3
+	indexToLetter($s1)
+	indexToLetter($s2)
+	indexToLetter($s3)
 	
 	# update rotor 1 drawing
 	li $a0, 0x51
@@ -540,7 +540,7 @@ drawRotors:
 	jal drawRotor
 	popReturnAddress
 	
-	move $a0, $t1
+	move $a0, $s1
 	li $a1, 0x00000000
 	li $a2, 4804
 	li $a3, 512
@@ -557,7 +557,7 @@ drawRotors:
 	jal drawRotor
 	popReturnAddress
 	
-	move $a0, $t2
+	move $a0, $s2
 	li $a1, 0x00000000
 	li $a2, 4856
 	li $a3, 512
@@ -574,7 +574,7 @@ drawRotors:
 	jal drawRotor
 	popReturnAddress
 	
-	move $a0, $t3
+	move $a0, $s3
 	li $a1, 0x00000000
 	li $a2, 4908
 	li $a3, 512
