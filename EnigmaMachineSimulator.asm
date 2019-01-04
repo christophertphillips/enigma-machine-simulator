@@ -143,9 +143,6 @@ main:
 	# draw lamps
 	li $a0, 0x00000000
 	jal drawLamps
-
-
-userInputLoop:
 	
 	# wait for keyboard input; poll continuously while waiting
 inLoop:	lw $t0, 0($s4)		# load check register
@@ -178,7 +175,7 @@ inLoop:	lw $t0, 0($s4)		# load check register
 	j letter
 	
 invalidChar:
-	j userInputLoop
+	j inLoop
 	
 incrementR1:
 	# increment/decrement rotor
@@ -296,7 +293,7 @@ outLoop:lw $t0, 0($s6)
 	sw $s0, 0($s7)
 
 	# Loop to top to read a new character
-	j userInputLoop
+	j inLoop
 
 	# exit program
 exit:
