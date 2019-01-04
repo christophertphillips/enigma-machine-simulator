@@ -917,8 +917,6 @@ drawLetter:
 	beq $a0, 0x58, letterX
 	beq $a0, 0x59, letterY
 	beq $a0, 0x5A, letterZ
-	
-	beq $a0, -1, delete
 
 letterA:
 	# draw row 1
@@ -1711,57 +1709,6 @@ letterZ:
 	add $s0, $s0, $s3
 	sw $s1, 4($s0)
 
-	# draw row 5
-	add $s0, $s0, $s3
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-
-	j funcEnd
-	
-delete:
-	# draw row 1
-	add $s0, $s0, $s2
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-
-	# draw row 1
-	add $s0, $s0, $s3
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-	
-	# draw row 2
-	add $s0, $s0, $s3
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-	
-	# draw row 3
-	add $s0, $s0, $s3
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-	
-	# draw row 4
-	add $s0, $s0, $s3
-	sw $s1, 0($s0)
-	sw $s1, 4($s0)
-	sw $s1, 8($s0)
-	sw $s1, 12($s0)
-	sw $s1, 16($s0)
-	
 	# draw row 5
 	add $s0, $s0, $s3
 	sw $s1, 0($s0)
