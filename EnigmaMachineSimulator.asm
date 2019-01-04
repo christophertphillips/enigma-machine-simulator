@@ -153,9 +153,9 @@ inLoop:	lw $t0, 0($s4)		# load check register
 	# escape character (exit program)
 	beq $s0, 0x1b, exit
 	
-	# ASCII characters less than 1 (invalid)
-	blt $s0, 0x30, invalidChar
-	bgt $s0, 0x7A, invalidChar
+	# ASCII characters less than 1 or greater than Z (invalid)
+	blt $s0, 0x31, invalidChar
+	bgt $s0, 0x5A, invalidChar
 	
 	# characters 1-6 (increment/decrement rotors)
 	beq $s0, 0x32, incrementR1
@@ -168,8 +168,7 @@ inLoop:	lw $t0, 0($s4)		# load check register
 	# characters 7-0 (invalid)
 	blt $s0, 0x41, invalidChar
 	
-	# ASCII characters greater than Z (invalid)
-	bgt $s0, 0x5A, invalidChar
+	
 	
 	# if a valid uppercase letter is entered, proceed
 	j letter
