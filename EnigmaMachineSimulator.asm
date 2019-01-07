@@ -100,7 +100,11 @@ mod:	div %x, $t8
 	# increment rotor 1 by one character
 	add %x, %x, %y
 	modulo(%x)
-
+	
+	# draw rotors
+	move $a0, $s1
+	move $a1, $s2
+	move $a2, $s3
 	jal drawRotors
 .end_macro
 
@@ -138,6 +142,9 @@ main:
 	jal drawReflector
 	
 	# draw rotors
+	move $a0, $s1
+	move $a1, $s2
+	move $a2, $s3
 	jal drawRotors
 	
 	# draw lamps
@@ -331,6 +338,9 @@ rEnd:	addi $s3, $s3, 1
 	
 	# draw the rotors in the bitmap display
 	pushReturnAddress
+	move $a0, $s1
+	move $a1, $s2
+	move $a2, $s3
 	jal drawRotors
 	popReturnAddress
 	
@@ -524,9 +534,9 @@ drawRotors:
 	pushRegisters
 
 	# display notification in console
-	#move $t1, $s1
-	#move $t2, $s2
-	#move $t3, $s3
+	move $s1, $a0
+	move $s2, $a1
+	move $s3, $a2
 	indexToLetter($s1)
 	indexToLetter($s2)
 	indexToLetter($s3)
