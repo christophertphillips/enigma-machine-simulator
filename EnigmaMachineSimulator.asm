@@ -528,7 +528,7 @@ reflectorMiddle:
     
 
 # draws all three rotors (high-level)
-# drawRotors()
+# drawRotors($a0 = rotor1Config, $a1 = rotor2Config, $a2 = rotor3Config)
 drawRotors:
 	# push s-registers onto the stack
 	pushRegisters
