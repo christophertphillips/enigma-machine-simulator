@@ -108,6 +108,29 @@ mod:	div %x, $t8
 	jal drawRotors
 .end_macro
 
+# stores rotor config values in $v0
+.macro storeRotorConfigValues(%x)
+	move $v0, $zero
+	add %x, %x, $s1
+	sll %x, %x, 8
+
+	add %x, %x, $s2
+	sll %x, %x, 8
+	
+	add %x, %x, $s3
+.end_macro
+
+# extracts rotor config values from $v0
+.macro extractRotorConfigValues(%x, %y, %z)
+	andi %z, $v0, 0xff
+	srl $v0, $v0, 8
+	
+	andi %y, $v0, 0xff
+	srl $v0, $v0, 8
+	
+	andi %x, $v0, 0xff
+.end_macro
+
 
 	.text
 
@@ -238,10 +261,8 @@ letter:
 	move $a2, $s3
 	jal moveRotors
 	
-	# load new rotor offset values
-	lw $s1, r1_offset
-	lw $s2, r2_offset
-	lw $s3, r3_offset
+	# extract rotor config values from moveRotors output
+	extractRotorConfigValues($s1, $s2, $s3)
 	
 	# rotor 3, 1st traversal
 	move $a0, $s0
@@ -344,10 +365,8 @@ rEnd:	addi $s3, $s3, 1
 	jal drawRotors
 	popReturnAddress
 	
-	# update the rotor offset values in memory
-	sw $s1, r1_offset
-	sw $s2, r2_offset
-	sw $s3, r3_offset
+	# store rotor config values in $v0 for function output
+	storeRotorConfigValues($v0)
 
 	# pop s-registers from the stack
 	popRegisters
