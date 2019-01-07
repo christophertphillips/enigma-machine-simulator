@@ -411,77 +411,87 @@ traverseRotor:
 drawEnigma:
 	# push s-registers onto the stack
 	pushRegisters
-
-	# draw enigma background
-	li $t0, 0x663333	# background color (brown)
-	la $t1, framebuffer	# offset
-	addi $t2, $t1, 32768	# byte loop end condition
-
-colorBackGroundLoop:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 4	# move to next word
-	blt $t1, $t2, colorBackGroundLoop	# if byte end condition not met, loop
 	
-	# draw wire 1
-	li $t0, 0x00000000	# line color (black)
-	la $t1, framebuffer
-	addi $t1, $t1, 3732	# offset
-	addi $t2, $t1, 352	# byte loop end condition
+	# store frame buffer starting byte
+	la $s0, framebuffer
+	
+	# set color for background (brown)
+	li $a0, 0x663333
+	
+	# draw background
+	move $a1, $s0		# offset
+	li $a2, 4		# wrap offset
+	addi $a3, $a1, 32768	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 
-drawLine1:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 4	# move to next word
-	blt $t1, $t2, drawLine1	# if byte end condition not met, loop
+	# set color for lines (black)
+	move $a0, $zero	
+
+	# draw wire 1
+	addi $a1, $s0, 3732	# offset
+	li $a2, 4		# wrap offset
+	addi $a3, $a1, 352	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 
 	# draw wire 2
-	li $t0, 0x00000000	# line color (black)
-	la $t1, framebuffer
-	addi $t1, $t1, 8340	# offset
-	addi $t2, $t1, 240	# byte loop end condition
-
-drawLine2:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 4	# move to next word
-	blt $t1, $t2, drawLine2	# if byte end condition not met, loop
+	addi $a1, $s0, 8340	# offset
+	li $a2, 4		# wrap offset
+	addi $a3, $a1, 240	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 
 	# draw wire 3
-	li $t0, 0x00000000	# line color (black)
-	la $t1, framebuffer
-	addi $t1, $t1, 4592	# offset
-	addi $t2, $t1, 32768	# byte loop end condition
-
-drawLine3:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 512	# move to next word
-	blt $t1, $t2, drawLine3	# if byte end condition not met, loop
+	addi $a1, $s0, 4592	# offset
+	li $a2, 512		# wrap offset
+	addi $a3, $a1, 32768	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 	
 	# draw wire 4
-	li $t0, 0x00000000	# color pixel
-	la $t1, framebuffer
-	addi $t1, $t1, 9088	# offset
-	addi $t2, $t1, 2560	# byte loop end condition
+	addi $a1, $s0, 9088	# offset
+	li $a2, 512		# wrap offset
+	addi $a3, $a1, 2560	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 
-drawLine4:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 512	# move to next word
-	blt $t1, $t2, drawLine4	# if byte end condition not met, loop
-	
 	# draw wire 5
-	li $t0, 0x00000000	# color pixel
-	la $t1, framebuffer
-	addi $t1, $t1, 11636	# offset
-	addi $t2, $t1, 28	# byte loop end condition
-
-drawLine5:
-	sw $t0, 0($t1)		# color pixel
-	addi $t1, $t1, 4	# move to next word
-	blt $t1, $t2, drawLine5	# if byte end condition not met, loop
+	addi $a1, $s0, 11636	# offset
+	li $a2, 4		# wrap offset
+	addi $a3, $a1, 28	# byte loop end condition
+	pushReturnAddress
+	jal drawLine
+	popReturnAddress
 	
 	# pop s-registers from the stack
 	popRegisters
 
 	jr $ra
 
+
+
+# draws a line
+# drawReflector($a1 = color, $a2 = offset, $a2 = wrap offset, $a3 = ending byte)
+drawLine:
+	# push s-registers onto the stack
+	pushRegisters
+	
+drawLineLoop:
+	sw $a0, 0($a1)		# color pixel
+	add $a1, $a1, $a2	# move to next word
+	blt $a1, $a3, drawLineLoop	# if byte end condition not met, loop
+
+	# pop s-registers from the stack
+	popRegisters
+
+	jr $ra
+	
 
 
 # draws a reflector
