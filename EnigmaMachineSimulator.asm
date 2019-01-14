@@ -741,15 +741,15 @@ initializeRow3:
 
 drawRow:
 	# determine whether to turn on lamp or not
-	lb $a0, 0($s1)			# get the letter to draw
-	li $a1, 0x808080		# specify backround color (off)
-	bne $a0, $s0, drawLampInRow	# determine if lamp is on (if not, skip ahead)
-	li $a1, 0x00FFFF00		# if lamp is on, specify background color (on)
+	lb $t0, 0($s1)			# get the letter to draw
+	li $a0, 0x808080		# specify backround color (off)
+	bne $t0, $s0, drawLampInRow	# determine if lamp is on (if not, skip ahead)
+	li $a0, 0x00FFFF00		# if lamp is on, specify background color (on)
 	
 drawLampInRow:
 	# draw the lamps
-	move $a2, $s2		# specify offset for lamp
-	li $a3, 512		# specify window width
+	move $a1, $s2		# specify offset for lamp
+	li $a2, 512		# specify window width
 	pushReturnAddress
 	jal drawLamp		# call function to draw individual lamp
 	popReturnAddress
@@ -798,13 +798,13 @@ drawLamp:
 	la $s0, framebuffer
 	
 	# set color
-	move $s1, $a1
+	move $s1, $a0
 				
 	# set offset value
-	move $s2, $a2
+	move $s2, $a1
 	
 	# set width of window
-	move $s3, $a3
+	move $s3, $a2
 	
 	# set variable to aid drawing middle section
 	li $s4, 0
