@@ -708,12 +708,12 @@ rotorMiddle:
 
 
 # draws all lamps (high-level)
-# drawLamps()
+# drawLamps($a0 = encrypted letter)
 drawLamps:
 	# push s-registers onto the stack
 	pushRegisters
 	move $s0, $a0
-	li $s4, 0			# index for iterating through all chars in row
+	li $s4, 0		# counter for iterating through all chars
 
 initializeRow1:
 	# values used to draw first row
@@ -743,41 +743,43 @@ drawRow:
 	# determine whether to turn on lamp or not
 	lb $a0, 0($s1)			# get the letter to draw
 	li $a1, 0x808080		# specify backround color (off)
-	bne $a0, $s0, drawLampInRow	# if lamp is off, skip ahead
-	li $a1, 0x00FFFF00		# if lamp is on, change background color (on)
+	bne $a0, $s0, drawLampInRow	# determine if lamp is on (if not, skip ahead)
+	li $a1, 0x00FFFF00		# if lamp is on, specify background color (on)
 	
 drawLampInRow:
 	# draw the lamps
-	move $a2, $s2		# specify offset
+	move $a2, $s2		# specify offset for lamp
 	li $a3, 512		# specify window width
 	pushReturnAddress
-	jal drawLamp
+	jal drawLamp		# call function to draw individual lamp
 	popReturnAddress
 	
 	# draw the letters
-	lb $a0, 0($s1)
-	li $a1, 0x00000000
-	move $a2, $s3
-	li $a3, 512
+	lb $a0, 0($s1)		# specify letter to draw
+	li $a1, 0x00000000	# specify color of letter (black)
+	move $a2, $s3		# specify offset for letter
+	li $a3, 512		# specify window width
 	pushReturnAddress
-	jal drawLetter
+	jal drawLetter		# call function to draw individual letter
 	popReturnAddress
 	
 	# increment and loop as necessary
-	addi $s1, $s1, 1
-	addi $s2, $s2, 52
-	addi $s3, $s3, 52
-	addi $s4, $s4, 1
+	addi $s1, $s1, 1	# increment row letter pointer to next row letter
+	addi $s2, $s2, 52	# increment offset for lamps
+	addi $s3, $s3, 52	# increment offset for characters
+	addi $s4, $s4, 1	# increment counter
 
-
+	# determine how to loop back
+	#row 1	
 	blt $s4, 9, drawRow 		# keep drawing row 1 if count < 9
 
+	#row 2
 	beq $s4, 9, initializeRow2 	# if count = 9, initialize values for row 2
 	blt $s4, 17, drawRow		# keep drawing row 2 if count < 17
 
+	#row 3
 	beq $s4, 17, initializeRow3 	# if count = 16, initialize values for row 3
 	blt $s4, 26, drawRow 		# keep drawing row 3 if count < 26
-
 	
 	# pop s-registers from the stack
 	popRegisters
