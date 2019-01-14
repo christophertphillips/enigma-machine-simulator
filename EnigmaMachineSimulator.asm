@@ -586,7 +586,7 @@ drawRotors:
 	pushReturnAddress
 	jal drawLetter
 	popReturnAddress
-	
+
 	# update rotor 2 drawing
 	li $a0, 0x51
 	li $a1, 0x708090
@@ -912,6 +912,11 @@ drawLetter:
 	beq $a0, 0x58, letterX
 	beq $a0, 0x59, letterY
 	beq $a0, 0x5A, letterZ
+	
+	beq $a0, 0x31, romanI
+	beq $a0, 0x32, romanII
+	beq $a0, 0x33, romanIII
+
 
 letterA:
 	# draw row 1
@@ -1714,6 +1719,95 @@ letterZ:
 
 	j funcEnd
 
+romanI:
+	# draw row 1
+	add $s0, $s0, $s2
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+	
+	# draw row 2
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	
+	# draw row 3
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	
+	# draw row 4
+	add $s0, $s0, $s3
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+
+	j funcEnd
+
+romanII:
+	# draw row 1
+	add $s0, $s0, $s2
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+	sw $s1, 12($s0)
+	sw $s1, 16($s0)
+	
+	# draw row 2
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	sw $s1, 12($s0)
+	
+	# draw row 3
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	sw $s1, 12($s0)
+	
+	# draw row 4
+	add $s0, $s0, $s3
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+	sw $s1, 12($s0)
+	sw $s1, 16($s0)
+
+	j funcEnd
+	
+romanIII:
+	# draw row 1
+	add $s0, $s0, $s2
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+	sw $s1, 12($s0)
+	sw $s1, 16($s0)
+	sw $s1, 20($s0)
+	sw $s1, 24($s0)
+	
+	# draw row 2
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	sw $s1, 12($s0)
+	sw $s1, 20($s0)
+	
+	# draw row 3
+	add $s0, $s0, $s3
+	sw $s1, 4($s0)
+	sw $s1, 12($s0)
+	sw $s1, 20($s0)
+	
+	# draw row 4
+	add $s0, $s0, $s3
+	sw $s1, 0($s0)
+	sw $s1, 4($s0)
+	sw $s1, 8($s0)
+	sw $s1, 12($s0)
+	sw $s1, 16($s0)
+	sw $s1, 20($s0)
+	sw $s1, 24($s0)
+
+	j funcEnd
+	
+
+	
 funcEnd:
 	# pop s-registers from the stack
 	popRegisters
