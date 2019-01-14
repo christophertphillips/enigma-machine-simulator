@@ -713,98 +713,43 @@ drawLamps:
 	# push s-registers onto the stack
 	pushRegisters
 	move $s0, $a0
+	li $s4, 0			# index for iterating through all chars in row
 
-	# temporary values used to draw first row
-	la $s1, row1		# address of first row chars
+initializeRow1:
+	# values used to draw first row
+	la $s1, row1		# address of row 1 chars
 	li $s2, 12832		# offset for lamps
 	li $s3, 13864		# offset for characters
-	li $s4, 0		# index to count 9 chars
 	
-drawRow1:
-	# determine whether to turn on lamp or not
-	lb $a0, 0($s1)
-	li $a1, 0x808080
-	bne $a0, $s0, drawLampRow1
-	li $a1, 0x00FFFF00
+	j drawRow
 	
-drawLampRow1:
-	# draw the lamps
-	move $a2, $s2	
-	li $a3, 512
-	pushReturnAddress
-	jal drawLamp
-	popReturnAddress
-	
-	# draw the letters
-	lb $a0, 0($s1)
-	li $a1, 0x00000000
-	move $a2, $s3
-	li $a3, 512
-	pushReturnAddress
-	jal drawLetter
-	popReturnAddress
-	
-	# increment and loop as necessary
-	addi $s1, $s1, 1
-	addi $s2, $s2, 52
-	addi $s3, $s3, 52
-	addi $s4, $s4, 1
-	blt $s4, 9, drawRow1
-	
-	# temporary values used to draw second row
-	la $s1, row2		# address of first row chars
+initializeRow2:
+	# values used to draw second row
+	la $s1, row2		# address of row 2 chars
 	li $s2, 19000		# offset for lamps
 	li $s3, 20032		# offset for characters
-	li $s4, 0		# index to count 9 chars
 	
-drawRow2:
-	# determine whether to turn on lamp or not
-	lb $a0, 0($s1)
-	li $a1, 0x808080
-	bne $a0, $s0, drawLampRow2
-	li $a1, 0x00FFFF00
-	
-drawLampRow2:
-	# draw the lamps
-	move $a2, $s2		
-	li $a3, 512
-	pushReturnAddress
-	jal drawLamp
-	popReturnAddress
-	
-	# draw the letters
-	lb $a0, 0($s1)
-	li $a1, 0x00000000
-	move $a2, $s3
-	li $a3, 512
-	pushReturnAddress
-	jal drawLetter
-	popReturnAddress
-	
-	# increment and loop as necessary
-	addi $s1, $s1, 1
-	addi $s2, $s2, 52
-	addi $s3, $s3, 52
-	addi $s4, $s4, 1
-	blt $s4, 8, drawRow2
-	
-	# temporary values used to draw third row
-	la $s1, row3		# address of first row chars
+	j drawRow
+
+initializeRow3:
+	# values used to draw third row
+	la $s1, row3		# address of row 3 chars
 	li $s2, 25120		# offset for lamps
 	li $s3, 26152		# offset for characters
-	li $s4, 0		# index to count 9 chars
 
-drawRow3:
+	j drawRow
+
+drawRow:
 	# determine whether to turn on lamp or not
-	lb $a0, 0($s1)
-	li $a1, 0x808080
-	bne $a0, $s0, drawLampRow3
-	li $a1, 0x00FFFF00
+	lb $a0, 0($s1)			# get the letter to draw
+	li $a1, 0x808080		# specify backround color (off)
+	bne $a0, $s0, drawLampInRow	# if lamp is off, skip ahead
+	li $a1, 0x00FFFF00		# if lamp is on, change background color (on)
 	
-drawLampRow3:
+drawLampInRow:
 	# draw the lamps
-	move $a2, $s2		
-	li $a3, 512
+	move $a2, $s2		# specify offset
+	li $a3, 512		# specify window width
 	pushReturnAddress
 	jal drawLamp
 	popReturnAddress
@@ -823,7 +768,16 @@ drawLampRow3:
 	addi $s2, $s2, 52
 	addi $s3, $s3, 52
 	addi $s4, $s4, 1
-	blt $s4, 9, drawRow3
+
+
+	blt $s4, 9, drawRow 		# keep drawing row 1 if count < 9
+
+	beq $s4, 9, initializeRow2 	# if count = 9, initialize values for row 2
+	blt $s4, 17, drawRow		# keep drawing row 2 if count < 17
+
+	beq $s4, 17, initializeRow3 	# if count = 16, initialize values for row 3
+	blt $s4, 26, drawRow 		# keep drawing row 3 if count < 26
+
 	
 	# pop s-registers from the stack
 	popRegisters
