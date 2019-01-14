@@ -586,6 +586,15 @@ drawRotors:
 	pushReturnAddress
 	jal drawLetter
 	popReturnAddress
+	
+	# draw roman numeral I
+	li $a0, 0x31
+	li $a1, 0xFF0000
+	li $a2, 8392
+	li $a3, 512
+	pushReturnAddress
+	jal drawLetter
+	popReturnAddress
 
 	# update rotor 2 drawing
 	li $a0, 0x51
@@ -604,6 +613,15 @@ drawRotors:
 	jal drawLetter
 	popReturnAddress
 	
+	# draw roman numeral II
+	li $a0, 0x32
+	li $a1, 0xFF0000
+	li $a2, 8440
+	li $a3, 512
+	pushReturnAddress
+	jal drawLetter
+	popReturnAddress
+	
 	# update rotor 3 drawing
 	li $a0, 0x51
 	li $a1, 0x708090
@@ -616,6 +634,15 @@ drawRotors:
 	move $a0, $s3
 	li $a1, 0x00000000
 	li $a2, 4908
+	li $a3, 512
+	pushReturnAddress
+	jal drawLetter
+	popReturnAddress
+	
+	# draw roman numeral II
+	li $a0, 0x33
+	li $a1, 0xFF0000
+	li $a2, 8488
 	li $a3, 512
 	pushReturnAddress
 	jal drawLetter
