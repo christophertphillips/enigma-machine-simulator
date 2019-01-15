@@ -138,16 +138,10 @@ mod:	div %x, $t8
 # PROGRAM   #
 #-----------#	
 
-main:
-	# load addresses used for input and output
-	li $s4,	0xffff0000
-	li $s5,	0xffff0004
-	li $s6,	0xffff0008
-	li $s7,	0xffff000c
-	
+main:	
 	# ensure that output ready bit is set to 1
 	li $t0, 1
-	sw $t0,	0($s6)
+	sw $t0,	0xffff0008	# set transmitter control register
 	
 	# load rotor offset values
 	lw $s1, r1_offset
@@ -175,10 +169,10 @@ main:
 	jal drawLamps
 	
 	# wait for keyboard input; poll continuously while waiting
-inLoop:	lw $t0, 0($s4)		# load check register
+inLoop:	lw $t0, 0xffff0000	# load check register (read from receiver control register)
 	andi  $t0, $t0, 0x0001  # mask all bits except least significant bit
 	beq $t0, $zero, inLoop  # check if input is ready
-	lw $s0, 0($s5)		# load user-inputted character
+	lw $s0, 0xffff0004	# load user-inputted character (save to receiver data register)
 	
 	# escape character (exit program)
 	beq $s0, 0x1b, exit
@@ -314,10 +308,10 @@ letter:
 	jal drawLamps
 	
 	# wait to print output to screen; poll continuously while waiting
-outLoop:lw $t0, 0($s6)
+outLoop:lw $t0, 0xffff0008
 	andi  $t0, $t0, 0x0001
 	beq $t0, $zero, outLoop
-	sw $s0, 0($s7)
+	sw $s0, 0xffff000c		# save to transmitter data register
 
 	# Loop to top to read a new character
 	j inLoop
