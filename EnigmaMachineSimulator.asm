@@ -575,10 +575,9 @@ drawRotors:
 	indexToLetter($s3)
 	
 	# update rotor 1 drawing
-	li $a0, 0x51
-	li $a1, 0x708090
-	li $a2, 700
-	li $a3, 512
+	li $a0, 0x708090
+	li $a1, 700
+	li $a2, 512
 	pushReturnAddress
 	jal drawRotor
 	popReturnAddress
@@ -601,10 +600,9 @@ drawRotors:
 	popReturnAddress
 
 	# update rotor 2 drawing
-	li $a0, 0x51
-	li $a1, 0x708090
-	li $a2, 752
-	li $a3, 512
+	li $a0, 0x708090
+	li $a1, 752
+	li $a2, 512
 	pushReturnAddress
 	jal drawRotor
 	popReturnAddress
@@ -627,10 +625,9 @@ drawRotors:
 	popReturnAddress
 	
 	# update rotor 3 drawing
-	li $a0, 0x51
-	li $a1, 0x708090
-	li $a2, 804
-	li $a3, 512
+	li $a0, 0x708090
+	li $a1, 804
+	li $a2, 512
 	pushReturnAddress
 	jal drawRotor
 	popReturnAddress
@@ -669,13 +666,13 @@ drawRotor:
 	la $s0, framebuffer
 	
 	# set color
-	move $s1, $a1
+	move $s1, $a0
 				
 	# set offset value
-	move $s2, $a2
+	move $s2, $a1
 	
 	# set width of window
-	move $s3, $a3
+	move $s3, $a2
 	
 	# set variable to aid drawing middle section
 	li $s4, 0
