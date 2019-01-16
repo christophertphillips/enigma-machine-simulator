@@ -23,6 +23,11 @@ r1i: 	.asciiz 	"UWYGADFPVZBECKMTHXSLRINQOJ"
 r2i: 	.asciiz 	"AJPCZWRLFBDKOTYUQGENHXMIVS"
 r3i:	.asciiz 	"TAGBPCSDQEUFVNZHYIXJWLRKOM"
 
+# index values for first character of each rotor
+r1Start:	.word	0
+r2Start:	.word	27
+r3Start:	.word	54
+
 # letters for lampboard
 row1:		.ascii "QWERTZUIO"
 row2:		.ascii "ASDFGHJK"
@@ -148,6 +153,11 @@ main:
 	lw $s2, r2_offset
 	lw $s3, r3_offset
 	
+	# load rotor index values
+	lw $s4, r1Start
+	lw $s5, r2Start
+	lw $s6, r3Start
+	
 	# draw enigma
 	jal drawEnigma
 	
@@ -260,19 +270,19 @@ letter:
 	
 	# rotor 3, 1st traversal
 	move $a0, $s0
-	la $a1, r3
+	la $a1, r1($s6)
 	move $a2, $s3
 	jal traverseRotor
 	
 	# rotor 2, 1st traversal
 	move $a0, $v0
-	la $a1, r2
+	la $a1, r1($s5)
 	move $a2, $s2
 	jal traverseRotor
 	
 	# rotor 1, 1st traversal
 	move $a0, $v0
-	la $a1, r1
+	la $a1, r1($s4)
 	move $a2, $s1
 	jal traverseRotor
 	
@@ -284,19 +294,19 @@ letter:
 	
 	# rotor 1, 2nd traversal
 	move $a0, $v0
-	la $a1, r1i
+	la $a1, r1i($s4)
 	move $a2, $s1
 	jal traverseRotor
 	
 	# rotor 2, 2nd traversal
 	move $a0, $v0
-	la $a1, r2i
+	la $a1, r1i($s5)
 	move $a2, $s2
 	jal traverseRotor
 	
 	# rotor 3, 2nd traversal
 	move $a0, $v0
-	la $a1, r3i
+	la $a1, r1i($s6)
 	move $a2, $s3
 	jal traverseRotor
 	
