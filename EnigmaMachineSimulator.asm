@@ -15,18 +15,18 @@ r2_offset: 	.word 0		# initial offset for rotor 2
 r3_offset: 	.word 0		# initial offset for rotor 3
 
 # wirings for individual rotors, reflector, and inverse rotors
-r1:	.asciiz		"EKMFLGDQVZNTOWYHXUSPAIBRCJ"
-r2:  	.asciiz		"AJDKSIRUXBLHWTMCQGZNPYFVOE"
-r3:  	.asciiz		"BDFHJLCPRTXVZNYEIWGAKMUSQO"
-ref: 	.asciiz 	"YRUHQSLDPXNGOKMIEBFZCWVJAT"
-r1i: 	.asciiz 	"UWYGADFPVZBECKMTHXSLRINQOJ"
-r2i: 	.asciiz 	"AJPCZWRLFBDKOTYUQGENHXMIVS"
-r3i:	.asciiz 	"TAGBPCSDQEUFVNZHYIXJWLRKOM"
+r1:	.ascii		"EKMFLGDQVZNTOWYHXUSPAIBRCJ"
+r2:  	.ascii		"AJDKSIRUXBLHWTMCQGZNPYFVOE"
+r3:  	.ascii		"BDFHJLCPRTXVZNYEIWGAKMUSQO"
+ref: 	.ascii 		"YRUHQSLDPXNGOKMIEBFZCWVJAT"
+r1i: 	.ascii 		"UWYGADFPVZBECKMTHXSLRINQOJ"
+r2i: 	.ascii	 	"AJPCZWRLFBDKOTYUQGENHXMIVS"
+r3i:	.ascii	 	"TAGBPCSDQEUFVNZHYIXJWLRKOM"
 
 # index values for first character of each rotor
 r1Start:	.word	0
-r2Start:	.word	27
-r3Start:	.word	54
+r2Start:	.word	26
+r3Start:	.word	52
 
 # letters for lampboard
 row1:		.ascii "QWERTZUIO"
