@@ -87,15 +87,15 @@ row3:		.ascii "PYXCVBNML"
 
 # calculate mod 26
 .macro modulo(%x)
-	li $t8, 26
+	li $t1, 26
 
-loop:	slt $t9, %x, $zero
-	beq $t9, $zero, mod
+loop:	slt $t2, %x, $zero
+	beq $t2, $zero, mod
 
-	add %x, %x, $t8
+	add %x, %x, $t1
 	j loop
 	
-mod:	div %x, $t8
+mod:	div %x, $t1
     	mfhi %x
 .end_macro
 
