@@ -346,15 +346,15 @@ moveRotors:
 	move $s3, $a2
 		
 	#  determine which rotors to move based on Enigma rotor notches
-	bne $s3, 21, rloop1
-	bne $s2, 4, rLoop2
-	addi, $s1, $s1, 1
-rLoop2:	addi, $s2, $s2, 1
-	j rEnd
-rloop1:	bne $s2, 4, rEnd
-	addi, $s2, $s2, 1
-	addi, $s1, $s1, 1
-rEnd:	addi $s3, $s3, 1
+	bne $s3, 21, dStep	# if right rotor isn't at notch, check for double-step, else proceed to next instruction
+	bne $s2, 4, mMiddle	# if middle rotor isn't at notch, move only middle/right rotors, else move left/middle/right rotors
+	addi, $s1, $s1, 1	# move left rotor
+mMiddle:addi, $s2, $s2, 1	# move middle rotor
+	j mRight		# jump to move right rotor
+dStep:	bne $s2, 4, mRight	# if middle rotor isn't at notch, move only right rotor, else perform double-step
+	addi, $s2, $s2, 1	# move middle rotor
+	addi, $s1, $s1, 1	# move left rotor
+mRight:	addi $s3, $s3, 1	# move right rotor
 
 	# take mod 26 of all rotors settings
 	modulo($s1)
